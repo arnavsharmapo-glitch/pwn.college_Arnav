@@ -8,9 +8,9 @@ Start the challenge, launch a terminal, invoke the pwn program using its absolut
 ```
 
 ## Solution :
-Step 1 : Open Terminal
-Step 2 : Write the absolute path to get the flag
-Step 3 : Copy and Paste the flag
+- Step 1 : Open Terminal
+- Step 2 : Write the absolute path to get the flag
+- Step 3 : Copy and Paste the flag
 ```sh
 hacker@paths~the-root:~$ /pwn
 BOOM!!!
@@ -38,9 +38,9 @@ This challenge again requires you to execute it by invoking its absolute path. Y
 ```
 
 ## Solution : 
-Step 1 : Open Terminal
-Step 2 : Write the absolute path to get the flag
-Step 3 : Copy and Paste the flag
+- Step 1 : Open Terminal
+- Step 2 : Write the absolute path to get the flag
+- Step 3 : Copy and Paste the flag
 ```sh
 hacker@paths~program-and-absolute-paths:~$ /challenge/run
 Correct!!!
@@ -74,10 +74,10 @@ This challenge will require you to execute the /challenge/run program from a spe
 ```
 
 ## Solution : 
-Step 1 : Open Terminal
-Step 2 : Run the command to check which directory you need to change to
-Step 3 : Change to that directory and run the command again to get you flag
-Step 4 : Copy and Paste the flag
+- Step 1 : Open Terminal
+- Step 2 : Run the command to check which directory you need to change to 
+- Step 3 : Change to that directory and run the command again to get you flag
+- Step 4 : Copy and Paste the flag
 ```sh
 hacker@paths~position-thy-self:/$ cd
 hacker@paths~position-thy-self:~$ /challenge/run
