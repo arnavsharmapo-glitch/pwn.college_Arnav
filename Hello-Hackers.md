@@ -11,9 +11,9 @@ In this level, invoke the hello command to get the flag! Keep in mind: commands 
 ```
 
 ## Solution
-Step 1 : Open the terminal
-Step 2 : Write the 'hello' command as instructed
-Step 3 : Copy and Paste the flag you got
+- Step 1 : Open the terminal
+- Step 2 : Write the 'hello' command as instructed
+- Step 3 : Copy and Paste the flag you got
 ```sh
 hacker@hello~intro-to-commands:~$ hello
 Success! Here is your flag:
@@ -52,9 +52,9 @@ In this challenge, to get the flag, you must run the hello command (NOT the echo
 ```
 
 ## Solution : 
-Step 1 : Open Terminal
-Step 2 : Type the command 'Hello' and the argument 'Hackers'
-Step 3 : Copy and Paste the flag you got
+- Step 1 : Open Terminal
+- Step 2 : Type the command 'Hello' and the argument 'Hackers'
+- Step 3 : Copy and Paste the flag you got
 ```sh
 hacker@hello~intro-to-arguments:~$ hello hackers
 Success! Here is your flag:
@@ -81,9 +81,9 @@ You can scroll through those saved commands with the up/down arrow keys, and we'
 ```
 
 ## Solution :
-Step 1 : Open the Terminal
-Step 2 : Press the 'up arrow' to get you previously used command or to get your history
-Step 3 : Copy and Paste the flag you got
+- Step 1 : Open the Terminal
+- Step 2 : Press the 'up arrow' to get you previously used command or to get your history
+- Step 3 : Copy and Paste the flag you got
 ```sh
 hacker@hello~command-history:~$ the flag is pwn.college{wUt661f71GfgBCdM2sOKIAP4j2M.0lNzEzNxwSN4AzNzEzW}^C
 ```
