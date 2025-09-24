@@ -121,3 +121,47 @@ This challenge will require you to execute the /challenge/run program from a spe
 ```
 
 ## Solution : 
+- Step 1 : Open Terminal
+- Step 2 : Run the command to check which directory you need to change to 
+- Step 3 : Change to that directory and run the command again to get you flag
+- Step 4 : Copy and Paste the flag
+```sh
+hacker@paths~position-elsewhere:~$ /challenge/run
+Incorrect...
+You are not currently in the /tmp directory.
+Please use the `cd` utility to change directory appropriately.
+hacker@paths~position-elsewhere:~$ cd /tmp
+hacker@paths~position-elsewhere:/tmp$ /challenge/run
+Correct!!!
+/challenge/run is an absolute path, invoked from the right directory!
+Here is your flag:
+pwn.college{EUPE8q_Sb4dyeid-03LwO0d4CdL.QX3QTN0wSN4AzNzEzW}
+hacker@paths~position-elsewhere:/tmp$ ^C
+```
+
+## Flag : 
+```sh
+pwn.college{EUPE8q_Sb4dyeid-03LwO0d4CdL.QX3QTN0wSN4AzNzEzW}
+```
+
+### Reference :
+None
+
+### Notes :
+Learnt how to move myself from one directory to another to run commands.
+
+
+# Challenge 5 : Position Yet Elsewhere
+```sh
+The Linux filesystem has tons of directories with tons of files. You can navigate around directories by using the cd (change directory) command and passing a path to it as an argument, as so:
+
+hacker@dojo:~$ cd /some/new/directory
+hacker@dojo:/some/new/directory$
+This affects the "current working directory" of your process (in this case, the bash shell). Each process has a directory in which it's currently hanging out. The reasons for this will become clear later in the module.
+
+As an aside, now you can see what the ~ was in the prompt! It shows the current path that your shell is located at.
+
+This challenge will require you to execute the /challenge/run program from a specific path (which it will tell you). You'll need to cd to that directory before rerunning the challenge program. Good luck!
+```
+
+## Solution :
