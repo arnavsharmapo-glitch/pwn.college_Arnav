@@ -286,7 +286,7 @@ None
 Learnt how to create files
 
 
-# Challenge 7 : Removing Files
+# Challenge 8 : Removing Files
 ```sh
 Files are all around you. Like candy wrappers, there'll eventually be too many of them. In this level, we'll learn to clean up!
 
@@ -327,7 +327,7 @@ None
 Learnt how to delete files
 
 
-# Challenge 8 : Moving Files
+# Challenge 9 : Moving Files
 ```sh
 You can also move files around with the mv command. The usage is simple:
 
@@ -369,7 +369,7 @@ None
 Learnt how to move files into another
 
 
-# Challenge 9 : Hidden File
+# Challenge 10 : Hidden File
 ```sh
 Interestingly, ls doesn't list all the files by default. Linux has a convention where files that start with a . don't show up by default in ls and in a few other contexts. To view them with ls, you need to invoke ls with the -a flag, as so:
 
@@ -408,7 +408,7 @@ None
 Learnt how to access files otherwise hidden
 
 
-# Challenge 10 : An Epic Filesystem Quest
+# Challenge 11 : An Epic Filesystem Quest
 ```sh
 With your knowledge of cd, ls, and cat, we're ready to play a little game!
 
@@ -521,7 +521,7 @@ None
 Learnt how to persevere through challenges
 
 
-# Challenge 11 : Making Directories
+# Challenge 12 : Making Directories
 ```sh
 e can create files. How about directories? You make directories using the mkdir command. Then you can stick files in there!
 
@@ -568,7 +568,7 @@ None
 Learnt how to make directories
 
 
-# Challenge 12 : Finding Files
+# Challenge 13 : Finding Files
 ```sh
 So now we know how to list, read, and create files. But how do we find them? We use the find command!
 
