@@ -6,7 +6,7 @@ The correct usage of programs depends, in a large part, on the proper specificat
 
 The program for this challenge is /challenge/challenge, and you'll need to invoke it properly in order for it to give you the flag. Let's pretend that this is its documentation:
 
-Welcome to the documentation for /challenge/challenge! To properly run this program, you will need to pass it the argument of --giveflag. Good luck!
+| Welcome to the documentation for /challenge/challenge! To properly run this program, you will need to pass it the argument of --giveflag. Good luck!
 
 Given that knowledge, go get the flag!
 
@@ -34,17 +34,15 @@ Learnt about documentation
 
 
 # Challenge 2 : Learning Comples Usage
-```sh
 While using most commands is straightforward, the usage of some commands can get quite complex. For example, the arguments to commands like sed and awk, which we're definitely not getting into right now, are entire programs in an esoteric programming language! Somewhere on the spectrum between cd and awk are commands that take arguments to their arguments...
 
 This sounds crazy, but you've already encountered this with the find level in Basic Commands. find has a -name argument, and the -name argument itself takes an argument specifying the name to search for. Many other commands are analogous.
 
 Here is this level's documentation for /challenge/challenge:
 
-Welcome to the documentation for /challenge/challenge! This program allows you to print arbitrary files to the terminal, when given the --printfile argument. The argument to the --printfile argument is the path of the flag to read. For example, /challenge/challenge --printfile /challenge/DESCRIPTION.md will print out the description of the level!
+| Welcome to the documentation for /challenge/challenge! This program allows you to print arbitrary files to the terminal, when given the --printfile argument. The argument to the --printfile argument is the path of the flag to read. For example, /challenge/challenge --printfile /challenge/DESCRIPTION.md will print out the description of the level!
 
 Given that documentation, go get the flag!
-```
 
 ## Solution : 
 - Step 1 : Open terminal
@@ -69,11 +67,12 @@ Learnt how to write aguments to arguments
 
 
 # Challenge 3 : Reading Manuals
-```sh
 This level introduces the man command. man is short for manual, and will display (if available) the manual of the command you pass as an argument. For example, let's say we wanted to learn about the yes command (yes, this is a real command):
-
+```sh
 hacker@dojo:~$ man yes
+```
 This will display the manual page for yes, which will look something like this:
+```sh
 
 YES(1)                           User Commands                          YES(1)
 
@@ -110,7 +109,9 @@ SEE ALSO
        or available locally via: info '(coreutils) yes invocation'
 
 GNU coreutils 8.32               February 2022                          YES(1)
+```
 The important sections are:
+```sh
 
 NAME(1)                           CATEGORY                          NAME(1)
 
@@ -134,6 +135,7 @@ SEE ALSO
 	Other man pages or online resources that might be useful.
 
 COLLECTION                        DATE                          NAME(1)
+```
 You can scroll around the manpage with your arrow keys and PgUp/PgDn. When you're done reading the manpage, you can hit q to quit.
 
 Manpages are stored in a centralized database. If you're curious, this database lives in the /usr/share/man directory, but you never need to interact with it directly: you just query it using the man command. The arguments to the man command aren't file paths, but just the names of the entries themselves (e.g., you run man yes to look up the yes manpage, rather than man /usr/bin/yes, which would be the actual path to the yes program but would result in man displaying garbage).
@@ -204,20 +206,26 @@ HINT 2: though the manpage is randomly named, you still actually use /challenge/
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
+- Step 2 : Enter the man command with the proper arguments
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@man~searching-for-manuals:~$ man man
+hacker@man~searching-for-manuals:~$ man -K /challenge/challenge
+^C
+hacker@man~searching-for-manuals:~$ /challenge/challenge --ctrtyl 704
+Correct usage! Your flag: pwn.college{EPctMrFAVtKyGVPJlw704twl27M.QX2EDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{EPctMrFAVtKyGVPJlw704twl27M.QX2EDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt how
+Learnt more about man command
 
 
 # Challenge 6 : Helpful Programs
@@ -229,29 +237,51 @@ In this level, you will practice reading a program's documentation with --help. 
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
-- Step 3 : Copy and paste the flag
+- Step 2 : Go to the help page for /challenge/challenge
+- Step 3 : Run the command with proper arguments
+- Step 4 : Copy and paste the flag
 ```sh
+hacker@man~helpful-programs:~$ /challenge/challenge --help
+usage: a challenge to make you ask for help [-h] [--fortune] [-v] [-g GIVE_THE_FLAG] [-p]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --fortune             read your fortune
+  -v, --version         get the version number
+  -g GIVE_THE_FLAG, --give-the-flag GIVE_THE_FLAG
+                        get the flag, if given the correct value
+  -p, --print-value     print the value that will cause the -g option to give you the flag
+hacker@man~helpful-programs:~$ /challenge/challenge -p
+The secret value is: 930
+hacker@man~helpful-programs:~$ /challenge/challenge -g
+usage: a challenge to make you ask for help [-h] [--fortune] [-v] [-g GIVE_THE_FLAG] [-p]
+a challenge to make you ask for help: error: argument -g/--give-the-flag: expected one argument
+hacker@man~helpful-programs:~$ /challenge/challenge -g 930
+Correct usage! Your flag: pwn.college{grJYGSUQpbB_HywjVqn_xPL9sgl.QX3IDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{grJYGSUQpbB_HywjVqn_xPL9sgl.QX3IDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt how
+Learnt about help pages for certain commands
 
 
 # Challenge 7 : Help For Built-ins
-```sh
-Some commands, rather than being programs with man pages and help options, are built into the shell itself. These are called builtins. Builtins are invoked just like commands, but the shell handles them internally instead of launching other programs. You can get a list of shell builtins by running the builtin help, as so:
 
+Some commands, rather than being programs with man pages and help options, are built into the shell itself. These are called builtins. Builtins are invoked just like commands, but the shell handles them internally instead of launching other programs. You can get a list of shell builtins by running the builtin help, as so:
+```sh
 hacker@dojo:~$ help
+```
+
 You can get help on a specific one by passing it to the help builtin. Let's look at a builtin that we've already used earlier, cd!
 
+```sh
 hacker@dojo:~$ help cd
 cd: cd [-L|[-P [-e]] [-@]] [dir]
     Change the shell working directory.
@@ -259,22 +289,38 @@ cd: cd [-L|[-P [-e]] [-@]] [dir]
     Change the current directory to DIR.  The default DIR is the value of the
     HOME shell variable.
 ...
-Some good information! In this challenge, we'll practice using help to look up help for builtins. This challenge's challenge command is a shell builtin, rather than a program. Like before, you need to lookup its help to figure out the secret value to pass to it!
 ```
+Some good information! In this challenge, we'll practice using help to look up help for builtins. This challenge's challenge command is a shell builtin, rather than a program. Like before, you need to lookup its help to figure out the secret value to pass to it!
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
+- Step 2 : Run the help argument for the challenge built-in command
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@man~help-for-builtins:~$ help challenge
+challenge: challenge [--fortune] [--version] [--secret SECRET]
+    This builtin command will read you the flag, given the right arguments!
+    
+    Options:
+      --fortune         display a fortune
+      --version         display the version
+      --secret VALUE    prints the flag, if VALUE is correct
+
+    You must be sure to provide the right value to --secret. That value
+    is "cavnFMWj".
+hacker@man~help-for-builtins:~$ ^C
+hacker@man~help-for-builtins:~$ challenge --secret cavnFMWj
+Correct! Here is your flag!
+pwn.college{cavnFMWjXhavXekSOgGyrPtor_k.QX0ETO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{cavnFMWjXhavXekSOgGyrPtor_k.QX0ETO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt how
+Learnt how to run help argument for built-in commands
