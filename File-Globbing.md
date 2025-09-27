@@ -224,20 +224,31 @@ Now, let's put the previous levels together! We put a few happy, but diversely-n
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
-- Step 3 : Copy and paste the flag
+- Step 2 : Switch to required directory
+- Step 3 : Run the command with the proper arguments
+- Step 4 : Copy and paste the flag
 ```sh
+hacker@globbing~mixing-globs:~$ ls /challenge/files -a
+.   amazing    challenging  educational  great  incredible  kind      magical  optimistic  queenly  splendid   uplifting   wonderful  youthful
+..  beautiful  delightful   fantastic    happy  jovial      laughing  nice     pwning      radiant  thrilling  victorious  xenial     zesty
+hacker@globbing~mixing-globs:~$ /challenge/run [cep]*
+Error: please run with a working directory of /challenge/files!
+hacker@globbing~mixing-globs:~$ cd /challenge/files
+hacker@globbing~mixing-globs:/challenge/files$ /challenge/run [cep]*
+You got it! Here is your flag!
+pwn.college{EPjWBzjrzlztMxzf4IbGQ8IHnkF.QX1IDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{EPjWBzjrzlztMxzf4IbGQ8IHnkF.QX1IDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt about
+Learnt more about mixed globbing
 
 
 # Challenge 7 : Exclusionary Globbing
@@ -262,20 +273,27 @@ NOTE: The ! character has a different special meaning in bash when it's not the 
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 : 
-- Step 3 : Copy and paste the flag
+- Step 2 : Switch to required directory
+- Step 3 : Run the command with the proper arguments
+- Step 4 : Copy and paste the flag
+
 ```sh
+hacker@globbing~exclusionary-globbing:~$ cd /challenge/files
+hacker@globbing~exclusionary-globbing:/challenge/files$ /challenge/run [!pwn]*
+You got it! Here is your flag!
+pwn.college{k04YN-z7SKO_iLYK0mzMqAgPq-M.QX2IDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{k04YN-z7SKO_iLYK0mzMqAgPq-M.QX2IDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt about
+Learnt about exclusionary globbing
 
 
 # Challenge 8 : Tab Completion
