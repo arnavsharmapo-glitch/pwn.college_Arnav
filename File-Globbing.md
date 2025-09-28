@@ -351,20 +351,32 @@ This challenge has a /challenge/files directory with a bunch of files starting w
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Use tab completion to run the command
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@globbing~multiple-options-for-tab-completion:~$ /challenge/files/pwncollege-f
+pwncollege-family      pwncollege-flamingo    pwncollege-flyswatter  
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwn
+pwn                    pwn-the-planet         pwncollege-flag        pwncollege-flyswatter  
+pwn-college            pwncollege-family      pwncollege-flamingo    pwncollege-hacking     
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwncollege-fl
+pwncollege-flag        pwncollege-flamingo    pwncollege-flyswatter  
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwncollege-fla
+pwncollege-flag      pwncollege-flamingo  
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwncollege-flag
+pwn.college{kzYaScQ5vkcEi6qhei1EREBfwUc.0lN0EzNxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{kzYaScQ5vkcEi6qhei1EREBfwUc.0lN0EzNxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt about using
+Learnt about using tab completion multiple times
 
 
 # Challenge 10 : Tab Completion on Commands
