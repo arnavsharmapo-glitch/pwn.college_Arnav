@@ -681,9 +681,18 @@ Okay, now you try it! In this level the flag is, as always, in /flag, but /chall
 
 ## Solution : 
 - Step 1 : Open terminal
+- Step 2 : Create symbolic link for the /flag file
+- Step 3 : Copy and paste the flag
+```sh
+hacker@commands~linking-files:~$ ln -s /flag ~/not-the-flag
+hacker@commands~linking-files:~$ /challenge/catflag
+About to read out the /home/hacker/not-the-flag file!
+pwn.college{IxaLuVFgAYMu1-D1j7kgIKG_QZV.QX5ETN1wSN4AzNzEzW}
+```
 
 ## Flag : 
 ```sh
+pwn.college{IxaLuVFgAYMu1-D1j7kgIKG_QZV.QX5ETN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
