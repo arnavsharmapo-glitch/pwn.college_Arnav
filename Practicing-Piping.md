@@ -93,20 +93,55 @@ Go for it now!
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
-- Step 3 :
+- Step 2 : Append the outputs into the required files as directed by the instructions
+- Step 3 : Copy and paste the flag
 ```sh
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge will check that output is redirected to a specific file path : /home/hacker/the-flag
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] Good luck!
+
+[TEST] You should have redirected my stdout to a file called /home/hacker/the-flag. Checking...
+
+[HINT] File descriptors are inherited from the parent, unless the FD_CLOEXEC is set by the parent on the file descriptor.
+[HINT] For security reasons, some programs, such as python, do this by default in certain cases. Be careful if you are
+[HINT] creating and trying to pass in FDs in python.
+
+[PASS] The file at the other end of my stdout looks okay!
+[PASS] Success! You have satisfied all execution requirements.
+I will write the flag in two parts to the file /home/hacker/the-flag! I'll do 
+the first write directly to the file, and the second write, I'll do to stdout 
+(if it's pointing at the file). If you redirect the output in append mode, the 
+second write will append to (rather than overwrite) the first write, and you'll 
+get the whole flag!
+hacker@piping~appending-output:~$ cat ~/the-flag 
+ | 
+\|/ This is the first half:
+ v 
+pwn.college{IZ8z-1CaNBa5H4ovCyCjvn2WEbf.QX3ATO0wSN4AzNzEzW}
+                              ^
+     that is the second half /|\
+                              |
+
+If you only see the second half above, you redirected in *truncate* mode (>) 
+rather than *append* mode (>>), and so the write of the second half to stdout 
+overwrote the initial write of the first half directly to the file. Try append 
+mode!
 ```
 
 ## Flag : 
 ```sh
+pwn.college{IZ8z-1CaNBa5H4ovCyCjvn2WEbf.QX3ATO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt how to append files without overwriting the data
 
 
 # Challenge 4 : Redirecting Errors
@@ -326,20 +361,41 @@ Try it now! Like the last level, this level will overwhelm you with output, but 
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
+- Step 2 : Grep for errors properly as directed in the instructions
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@piping~grepping-errors:~$ /challenge/run 2>& 1 | grep pwn.college
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge checks for a specific process at the other end of stderr : grep
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stderr to another process. Checking...
+[TEST] Performing checks on that process!
+
+[INFO] The process' executable is /nix/store/8b4vn1iyn6kqiisjvlmv67d1c0p3j6wj-gnugrep-3.11/bin/grep.
+[INFO] This might be different than expected because of symbolic links (for example, from /usr/bin/python to /usr/bin/python3 to /usr/bin/python3.8).
+[INFO] To pass the checks, the executable must be grep.
+
+[PASS] You have passed the checks on the process on the other end of my stderr!
+[PASS] Success! You have satisfied all execution requirements.
+pwn.college{sPP4E9eDz-C-7THnFvx9Z0ar0y1.QX1ATO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{sPP4E9eDz-C-7THnFvx9Z0ar0y1.QX1ATO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt how to grep for errors properly
 
 
 # Challenge 9 : Filtering with grep -v
@@ -405,20 +461,39 @@ Now, you try it! This process' /challenge/pwn must be piped into /challenge/coll
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
+- Step 2 : Duplicate the data by using tee command properly
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn | tee int | /challenge/college 
+Processing...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat int
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "kL68OZ5d"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret kL68OZ5d
+Processing...
+You must pipe the output of /challenge/pwn into /challenge/college (or 'tee' 
+for debugging).
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret kL68OZ5d | /challenge/college 
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{kL68OZ5dylOWkrVkDSAclXoeWci.QXxITO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{kL68OZ5dylOWkrVkDSAclXoeWci.QXxITO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt about duplicating piped data with tee
 
 
 # Challenge 11 : Process substitution for input
@@ -542,20 +617,28 @@ That's just silly! The lesson here is that, while Process Substitution is a powe
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 : 
+- Step 2 : Run the commands correctly while piping its outputs to multiple commands simultaneously 
 - Step 3 : Copy and paste flag
 ```sh
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack | tee >(/challenge/the) >(/challenge/planet)
+This secret data must directly and simultaneously make it to /challenge/the and 
+/challenge/planet. Don't try to copy-paste it; it changes too fast.
+489477984104160
+Congratulations, you have duplicated data into the input of two programs! Here 
+is your flag:
+pwn.college{M8OPEJMKS74hzaUMLJKaKgrDng4.QXwgDN1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{M8OPEJMKS74hzaUMLJKaKgrDng4.QXwgDN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt how to pipe to multiple programs simultaneously
 
 
 # Challenge 13 : Split piping stderr and stdout
@@ -577,10 +660,12 @@ Go get the flag!
 - Step 2 :
 - Step 3 : Copy and paste flag
 ```sh
+
 ```
 
 ## Flag : 
 ```sh
+
 ```
 
 ### Reference : 
@@ -633,18 +718,32 @@ This challenge will be a simple introduction to FIFOs. You'll need to create a /
 HINT: The blocking behavior of FIFOs makes it hard to solve this challenge in a single terminal. You may want to use the Desktop or VSCode mode for this challenge so that you can launch two terminals.
 
 ## Solution : 
-- Step 1 :
-- Step 2 :
-- Step 3 :
+- Step 1 : Open two terminals
+- Step 2 : Make and redirect commands to the FIFO
+- Step 3 : Copy and paste the flag
 ```sh
+hacker@piping~named-pipes:~$ mkfifo /tmp/flag_fifo
+hacker@piping~named-pipes:~$ /challenge/run > /tmp/flag_fifo 
+You're successfully redirecting /challenge/run to a FIFO at /tmp/flag_fifo! 
+Bash will now try to open the FIFO for writing, to pass it as the stdout of 
+/challenge/run. Recall that operations on FIFOs will *block* until both the 
+read side and the write side is open, so /challenge/run will not actually be 
+launched until you start reading from the FIFO!
+hacker@piping~named-pipes:~$ /challenge/run 
+The stdout of /challenge/run does not seem to point to a FIFO!
+hacker@piping~named-pipes:~$ cat /tmp/flag_fifo 
+You've correctly redirected /challenge/run's stdout to a FIFO at 
+/tmp/flag_fifo! Here is your flag:
+pwn.college{8mBpcsvcfT9iztCIxjKg2GDssi4.01MzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{8mBpcsvcfT9iztCIxjKg2GDssi4.01MzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt about FIFO's and how to use them
