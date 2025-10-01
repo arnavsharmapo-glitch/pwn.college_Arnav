@@ -657,22 +657,25 @@ Go get the flag!
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Redirect the stderr and srdout into their respective commands as instructed by making a temporary file for them first
 - Step 3 : Copy and paste flag
 ```sh
-
+hacker@piping~split-piping-stderr-and-stdout:~$ /challenge/hack 1> >(/challenge/planet) 2> >(/challenge/the)
+Congratulations, you have learned a redirection technique that even experts 
+struggle with! Here is your flag:
+pwn.college{UgJ7_AJquuZ0uLspS0Fc0Ir5zJR.QXxQDM2wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{UgJ7_AJquuZ0uLspS0Fc0Ir5zJR.QXxQDM2wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt 
+Learnt about redirecting stderr and stdout into different files without mixing them up
 
 
 # Challenge 14 : Named Pipes
