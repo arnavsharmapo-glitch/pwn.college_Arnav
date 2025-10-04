@@ -23,20 +23,41 @@ But THIS challenge (and only this challenge) does have a root password. That pas
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Use the su command to access the root of the system and to read the files
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@users~becoming-root-with-su:~$ su
+Password: 
+root@users~becoming-root-with-su:/home/hacker# ls -a
+.   .ICEauthority  .cache   .dbus     .local   Desktop  college       int     not-the-flag  pwn         stdout    y
+..  .bash_history  .config  .lesshst  COLLEGE  PWN      instructions  myflag  out           redirected  the-flag
+root@users~becoming-root-with-su:/home/hacker# cat the-flag 
+ | 
+\|/ This is the first half:
+ v 
+pwn.college{IZ8z-1CaNBa5H4ovCyCjvn2WEbf.QX3ATO0wSN4AzNzEzW}
+                              ^
+     that is the second half /|\
+                              |
+
+If you only see the second half above, you redirected in *truncate* mode (>) 
+rather than *append* mode (>>), and so the write of the second half to stdout 
+overwrote the initial write of the first half directly to the file. Try append 
+mode!
+root@users~becoming-root-with-su:/home/hacker# cat not-the-flag 
+pwn.college{wFooIl56e2RlOAnFqFPK2Z9NV6r.QX1UDN1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{wFooIl56e2RlOAnFqFPK2Z9NV6r.QX1UDN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt 
+Learnt about the su command and roots to access the privileges of an owner
 
 
 # Challenge 2 : Other users with su
@@ -51,20 +72,26 @@ Awesome! In this level, you must switch to the zardus user and then run /challen
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Switch your user to the one provided in the instructions and then run the commands
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@users~other-users-with-su:~$ su zardus
+Password: 
+zardus@users~other-users-with-su:/home/hacker$ /challenge/run 
+Congratulations, you have become Zardus! Here is your flag:
+pwn.college{IW7ghdcclYJvOlyJ8ulN3fHOIa0.QX2UDN1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{IW7ghdcclYJvOlyJ8ulN3fHOIa0.QX2UDN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt 
+Learnt how to switch between users
 
 
 # Challenge 3 : Cracking passwords
@@ -126,17 +153,60 @@ This level simulates this story, giving you a leak of /etc/shadow (in /challenge
 - Step 2 :
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@users~cracking-passwords:~$ cat /challenge/shadow-leak 
+root:*:20182:0:99999:7:::
+daemon:*:20182:0:99999:7:::
+bin:*:20182:0:99999:7:::
+sys:*:20182:0:99999:7:::
+sync:*:20182:0:99999:7:::
+games:*:20182:0:99999:7:::
+man:*:20182:0:99999:7:::
+lp:*:20182:0:99999:7:::
+mail:*:20182:0:99999:7:::
+news:*:20182:0:99999:7:::
+uucp:*:20182:0:99999:7:::
+proxy:*:20182:0:99999:7:::
+www-data:*:20182:0:99999:7:::
+backup:*:20182:0:99999:7:::
+list:*:20182:0:99999:7:::
+irc:*:20182:0:99999:7:::
+gnats:*:20182:0:99999:7:::
+nobody:*:20182:0:99999:7:::
+_apt:*:20182:0:99999:7:::
+systemd-timesync:*:20357:0:99999:7:::
+systemd-network:*:20357:0:99999:7:::
+systemd-resolve:*:20357:0:99999:7:::
+mysql:!:20357:0:99999:7:::
+messagebus:*:20357:0:99999:7:::
+sshd:*:20357:0:99999:7:::
+hacker::20357:0:99999:7:::
+zardus:$6$SkbwD4mTVoYUmnER$R/hfTwu1Ow44FbMhzUncbYzm6.0iMhHUfnXgAMxiWoWPNvh1Ij9kvuuwb3gvCx.Hbb6ggj9RBeqoj7DKcOogz/:20365:0:99999:7:::
+hacker@users~cracking-passwords:~$ john /challenge/shadow-leak 
+Created directory: /home/hacker/.john
+Loaded 1 password hash (crypt, generic crypt(3) [?/64])
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:00:08 85% 1/3 0g/s 287.6p/s 287.6c/s 287.6C/s Zardus1111..z99999123456
+aardvark         (zardus)
+1g 0:00:00:20 100% 2/3 0.04945g/s 287.9p/s 287.9c/s 287.9C/s Johnson..buzz
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+hacker@users~cracking-passwords:~$ su zardus
+Password: 
+zardus@users~cracking-passwords:/home/hacker$ /challenge/run 
+Congratulations, you have become Zardus! Here is your flag:
+pwn.college{k29vaSKGz8IONfTlKDaL9t_vrdF.QX3UDN1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{k29vaSKGz8IONfTlKDaL9t_vrdF.QX3UDN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt 
+Learnt how to crack hashed passwords
 
 
 # Challenge 4 : Using Sudo
