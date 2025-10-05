@@ -239,17 +239,20 @@ NOTE: After this level, we will enable Privileged Mode! When you launch a challe
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Run the sudo command and simultaneously read the file
 - Step 3 : Copy and paste the flag
 ```sh
+hacker@users~using-sudo:~$ sudo cat /flag
+pwn.college{gzc_f5WM2xRlGqxs7WL4nG9Pghs.QX4UDN1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
+pwn.college{gzc_f5WM2xRlGqxs7WL4nG9Pghs.QX4UDN1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt 
+Learnt about using sudo instead of su command
