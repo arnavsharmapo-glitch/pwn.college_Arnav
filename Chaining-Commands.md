@@ -293,9 +293,40 @@ None
 Learnt
 
 
-# Challenge 1 : Chaining with semicolons
+# Challenge 8 : Scripting with Arguments
 
+You've learned how to make shell scripts, but so far they've just been lists of commands. Scripts become much more powerful when they can accept arguments! This might look like:
+```sh
+hacker@dojo:~$ bash myscript.sh hello world
+```
+The script can access these arguments using special variables:
 
+- $1 contains the first argument ("hello")
+- $2 contains the second argument ("world")
+- $3 would contain the third argument (if there had been one)
+...and so on
+Here's a simple example:
+```sh
+hacker@dojo:~$ cat myscript.sh
+#!/bin/bash
+echo "First argument: $1"
+echo "Second argument: $2"
+hacker@dojo:~$ bash myscript.sh hello world
+First argument: hello
+Second argument: world
+hacker@dojo:~$
+```
+For this challenge, you need to write a script at /home/hacker/solve.sh that:
+
+Takes two arguments
+Outputs them in REVERSE order (second argument first, then the first argument)
+For example:
+```sh
+hacker@dojo:~$ bash /home/hacker/solve.sh pwn college
+college pwn
+hacker@dojo:~$
+```
+Once your script works correctly, run /challenge/run to get your flag!
 
 ## Solution : 
 - Step 1 : Open terminal
@@ -317,9 +348,34 @@ None
 Learnt
 
 
-# Challenge 1 : Chaining with semicolons
+# Challenge 9 : Scripting with Conditionals
 
+Now that you can use arguments in scripts, let's make them smarter with conditional logic!
 
+In bash, you can use if statements to make decisions:
+```sh
+if [ "$1" == "ping" ]
+then
+    echo "pong"
+fi
+```
+The above, in English, is if the first argument is "ping", print out "pong". The syntax is somewhat unforgiving for a few reasons. First, you must have spaces after if (if you're used to a language like C, this is different), after [, and before ]. Second, if, then, and fi must all be on different lines (or separated by semicolons); you can't lump them into the same statement. It's also a bit weird: instead of endif or end or something like that, the terminator of the if statement is fi (if backwards). Just something you have to remember.
+
+For this challenge, write a script at /home/hacker/solve.sh that:
+
+- Takes one argument
+- If the argument is "pwn", output "college"
+- For any other input, output nothing
+Example:
+```sh
+hacker@dojo:~$ bash /home/hacker/solve.sh pwn
+college
+hacker@dojo:~$ bash /home/hacker/solve.sh foo
+hacker@dojo:~$
+```
+Once your script works correctly, run /challenge/run to get your flag!
+
+NOTE: Interested in what else you can check in a condition, other than string equality? Read all about it with help test!
 
 ## Solution : 
 - Step 1 : Open terminal
@@ -341,9 +397,46 @@ None
 Learnt
 
 
-# Challenge 1 : Chaining with semicolons
+# Challenge 10 : Scripting with Default cases
 
+our if statements so far have handled specific cases, but what about everything else? That's where else comes in!
 
+The else clause executes when the if condition is false:
+```sh
+if [ "$1" == "hello" ]
+then
+    echo "Hi there!"
+else
+    echo "I don't understand"
+fi
+```
+Note that the else doesn't have a condition --- it catches everything that didn't match previously. It also doesn't have a then statement. Finally, the fi goes after the else block to denote the end of the whole complex statement! It is also optional: you didn't have it in the previous level, and you only need it if the logic you're trying to achieve demands it.
+
+Here's a practical example:
+```sh
+if [ "$1" == "start" ]
+then
+    echo "Starting the service..."
+else
+    echo "Unknown command. Use 'start' to begin."
+fi
+```
+For this challenge, write a script at /home/hacker/solve.sh that:
+
+Takes one argument
+If the argument is "pwn", output "college"
+For any other input, output "nope"
+Example:
+```sh
+hacker@dojo:~$ bash /home/hacker/solve.sh pwn
+college
+hacker@dojo:~$ bash /home/hacker/solve.sh hack
+nope
+hacker@dojo:~$ bash /home/hacker/solve.sh anything
+nope
+hacker@dojo:~$
+```
+Once your script works correctly, run /challenge/run to get your flag!
 
 ## Solution : 
 - Step 1 : Open terminal
@@ -365,9 +458,47 @@ None
 Learnt
 
 
-# Challenge 1 : Chaining with semicolons
+# Challenge 11 : Scripting with Multiple conditions
 
+You've learned how to use a single if statement to check a condition. But what if you need to check multiple conditions? You can use elif (short for else if):
+```sh
+if [ "$1" == "one" ]
+then
+    echo "1"
+elif [ "$1" == "two" ]
+then
+    echo "2"
+elif [ "$1" == "three" ]
+then
+    echo "3"
+else
+    echo "unknown"
+fi
+```
+Note that you do need a then after the elif, just like the if. As before the else at the end catches everything that didn't match.
 
+For this challenge, write a script at /home/hacker/solve.sh that:
+
+- Takes one argument
+- If the argument is "hack", output "the planet"
+- If the argument is "pwn", output "college"
+- If the argument is "learn", output "linux"
+- For any other input, output "unknown"
+Example:
+```sh
+hacker@dojo:~$ bash /home/hacker/solve.sh hack
+the planet
+hacker@dojo:~$ bash /home/hacker/solve.sh pwn
+college
+hacker@dojo:~$ bash /home/hacker/solve.sh learn
+linux
+hacker@dojo:~$ bash /home/hacker/solve.sh foo
+unknown
+hacker@dojo:~$
+```
+Once your script works correctly, run /challenge/run to get your flag!
+
+NOTE: As you're creating your script, make sure to follow the spacing closely in the examples. Unlike many other languages, bash requires the [ and the ] to be separated from other characters by spaces, otherwise it cannot parse the condition.
 
 ## Solution : 
 - Step 1 : Open terminal
@@ -389,9 +520,13 @@ None
 Learnt
 
 
-# Challenge 1 : Chaining with semicolons
+# Challenge 12 : Reading Shell Scripts
 
+You're not the only one who writes shell scripts! They are very handy for doing simple "system-level" tasks, and are a common tool that developers and sysadmins reach for. In fact, a surprising fraction of the programs on a typical Linux machine are shell scripts.
 
+In this level, we will learn to read shell scripts. /challenge/run is a shell script that requires you to put in a secret password, but that password is hardcoded into the script iself! Read the script (using, say, cat), figure out the password, and get the flag!
+
+NOTE: Feel free to try to read the code of other challenges as well! Reading code is a critical strategy in learning new skills, because you can see how certain functionality was implemented and reuse those strategies in your own scripts. But watch out: some program files are machine code, and will not be readable to humans. You can use the file command to differentiate, but almost all the challenges in the Linux Luminarium are implemented as shell scripts and are safe to cat out.
 
 ## Solution : 
 - Step 1 : Open terminal
