@@ -46,22 +46,24 @@ In this level, we will practice changing the owner of the /flag file to the hack
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Changw the owner of the required file and then run the command
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@permissions~changing-file-ownership:~$ chown hacker /flag
+hacker@permissions~changing-file-ownership:~$ cat /flag 
+pwn.college{8UXmsk43mZXmXdqCuoyxLTG1bcE.QXxEjN0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{8UXmsk43mZXmXdqCuoyxLTG1bcE.QXxEjN0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to change owners of any file 
 
 
 # Challenge 2 : Groups and Files
@@ -123,22 +125,24 @@ In this level, I have made the flag readable by whatever group owns it, but this
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Change the group ownership of the file and then run the correct commands
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@permissions~groups-and-files:~$ chgrp hacker /flag
+hacker@permissions~groups-and-files:~$ cat /flag
+pwn.college{o9ovFyUBZMpcqlE2HxzI9zl2vtb.QXxcjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{o9ovFyUBZMpcqlE2HxzI9zl2vtb.QXxcjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to change the group ownership of a file
 
 
 # Challenge 3 : Fun with Group Names
@@ -152,19 +156,23 @@ The point is, you've used hacker for the group before, but in this level, that i
 - Step 2 :
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@permissions~fun-with-groups-names:~$ id
+uid=1000(hacker) gid=1000(grp17920) groups=1000(grp17920)
+hacker@permissions~fun-with-groups-names:~$ chgrp grp17920 /flag
+hacker@permissions~fun-with-groups-names:~$ cat /flag
+pwn.college{EoXM9aD5Yayspw4k48UWMwk_lJX.QXycjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{EoXM9aD5Yayspw4k48UWMwk_lJX.QXycjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt more about changung the group ownership of files and how to check for the current owner
 
 
 # Challenge 4 : Changing Permissions
@@ -198,6 +206,7 @@ For college_file above, the rw-r--r-- permissions entry decodes to:
 - r: all other users can read it
 - -: all other users cannot write to it
 - -: all other users cannot execute it
+
 Now, let's look at the default permissions of /flag:
 ```sh
 hacker@dojo:~$ ls -l /flag
