@@ -22,19 +22,21 @@ Give it a try now! In this level, you must run /challenge/pwn and then /challeng
 - Step 2 :
 - Step 3 : Copy and Paste flag
 ```sh
-
+hacker@chaining~chaining-with-semicolons:~$ /challenge/pwn ; /challenge/college
+Yes! You chained /challenge/pwn and /challenge/college! Here is your flag:
+pwn.college{sEsLwXaF2zdh-aa-jrkGWCmbtsZ.QX1UDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{sEsLwXaF2zdh-aa-jrkGWCmbtsZ.QX1UDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to chain commands using ;
 
 
 # Challenge 2 : Building on Success
@@ -66,19 +68,20 @@ In this challenge, you need to chain the programs /challenge/first-success and /
 - Step 2 :
 - Step 3 : Copy and Paste flag
 ```sh
-
+hacker@chaining~building-on-success:~$ /challenge/first-success && /challenge/second
+Nice chaining! Flag: pwn.college{EFAzDhJ-ELnprvO2p_V6ZCa3Rdq.0lM0MDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{EFAzDhJ-ELnprvO2p_V6ZCa3Rdq.0lM0MDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to chain commands using && operator
 
 
 # Challenge 3 : Handling Failure
@@ -108,19 +111,20 @@ In this challenge, you need to chain /challenge/first-failure and /challenge/sec
 - Step 2 :
 - Step 3 : Copy and Paste flag
 ```sh
-
+hacker@chaining~handling-failure:~$ /challenge/first-failure || /challenge/second
+Nice chaining! Flag: pwn.college{UPHUmpbPlo88P4SYitwlncwFbtL.01M0MDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{UPHUmpbPlo88P4SYitwlncwFbtL.01M0MDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to chain command using || operator
 
 
 # Challenge 4 : Your First Shell Script
@@ -153,22 +157,29 @@ NOTE: We haven't yet talked about Linux's amazing array of competent command lin
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Save a shell script and then execute it in the terminal
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
-
+/challenge/pwn ; /challenge/college
+```
+In Terminal :
+```sh
+hacker@chaining~your-first-shell-script:~$ bash x.sh
+Great job, you've written your first shell script! Here is the flag:
+pwn.college{QRXeeoGIkwrYkXN6lDrgmdCHCR_.QXxcDO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{QRXeeoGIkwrYkXN6lDrgmdCHCR_.QXxcDO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to create a shell script
 
 
 # Challenge 5 : Redirecting Script Output
@@ -192,22 +203,30 @@ In this level, we will practice piping (|) from your script to another program. 
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Create a shell script and then pipe the output into the correct command
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+/challenge/pwn;/challenge/college
+```
 
+In Terminal :
+```sh
+hacker@chaining~redirecting-script-output:~$ bash pwn.sh | /challenge/solve
+Correct! Here is your flag:
+pwn.college{oB9wmkXwq4Ohj1ESIY8byIYR93R.QX4ETO0wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{oB9wmkXwq4Ohj1ESIY8byIYR93R.QX4ETO0wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt about piping a shell script into another command
 
 
 # Challenge 6 : Executable Shell Scripts
@@ -224,20 +243,29 @@ Try that here! Make a shellscript that will invoke /challenge/solve, make it exe
 - Step 1 : Open terminal
 - Step 2 :
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+/challenge/solve
+```
 
+In Terminal :
+```sh
+hacker@chaining~executable-shell-scripts:~$ chmod ugo+x pwn.sh
+hacker@chaining~executable-shell-scripts:~$  /home/hacker/pwn.sh
+Congratulations on your shell script execution! Your flag:
+pwn.college{4B2uh7Sr7JeQkpyqHs0xEAsGSOI.QX0cjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{4B2uh7Sr7JeQkpyqHs0xEAsGSOI.QX0cjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt about removing the need for bash command
 
 
 # Challenge 7 : Understanding Shebangs
@@ -275,22 +303,33 @@ FUN FACT: Common shebangs you might see:
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Make a shebag file and then execute the commands as directed
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+#!/bin/bash
+echo hack the planet
+```
 
+In terminal :
+```sh
+hacker@chaining~understanding-shebangs:~$ chmod ugo+x solve.sh
+hacker@chaining~understanding-shebangs:~$ /challenge/run
+Testing your script...
+Perfect! Your flag:
+Flag: pwn.college{o0WMzSdj0q6h_O1LyW-MT58A23h.0VOzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+Flag: pwn.college{o0WMzSdj0q6h_O1LyW-MT58A23h.0VOzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt about shebangs and how to create them
 
 
 # Challenge 8 : Scripting with Arguments
@@ -330,22 +369,32 @@ Once your script works correctly, run /challenge/run to get your flag!
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Use arguments in the file and then execute the correct commands
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+#!/bin/bash
+echo "$2 $1"
+```
 
+In terminal :
+```sh
+hacker@chaining~scripting-with-arguments:~$ /challenge/run
+Correct! Your script properly reversed the arguments.
+Here's your flag:
+pwn.college{gr2-XHnRsKnWbAoTfSksSFcoMH0.0VNzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{gr2-XHnRsKnWbAoTfSksSFcoMH0.0VNzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt about using arguments in shebangs
 
 
 # Challenge 9 : Scripting with Conditionals
@@ -379,22 +428,35 @@ NOTE: Interested in what else you can check in a condition, other than string eq
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Use conditionals in the file and then execute the proper commands
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+#!/bin/bash
+if [ "$1" == "pwn" ]
+then
+echo "college"
+fi
+```
 
+In terminal : 
+```sh
+hacker@chaining~scripting-with-conditionals:~$ /challenge/run
+Correct! Your script properly handles all the conditions.
+Here's your flag:
+pwn.college{IdeW-lqBOF9qO5kvVxNX9p_HueT.0lNzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{IdeW-lqBOF9qO5kvVxNX9p_HueT.0lNzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to use conditionals in shebangs
 
 
 # Challenge 10 : Scripting with Default cases
@@ -440,22 +502,37 @@ Once your script works correctly, run /challenge/run to get your flag!
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Use conditionals in the file along with a default case and then run the commands properly
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+#!/bin/bash
+if [ "$1" == "pwn" ]
+then
+echo "college"
+else
+echo "nope"
+fi
+```
 
+In terminal : 
+```sh
+hacker@chaining~scripting-with-default-cases:~$ /challenge/run
+Correct! Your script properly handles the if/else conditions.
+Here's your flag:
+pwn.college{ocUNWbhRFOI3LpJ8_vm8rBDe01N.01NzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{ocUNWbhRFOI3LpJ8_vm8rBDe01N.01NzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt about using conditionals with default cases in shebangs
 
 
 # Challenge 11 : Scripting with Multiple conditions
@@ -504,20 +581,40 @@ NOTE: As you're creating your script, make sure to follow the spacing closely in
 - Step 1 : Open terminal
 - Step 2 :
 - Step 3 : Copy and Paste flag
+In code :
 ```sh
+if [ "$1" == "hack" ]
+then
+    echo "the planet"
+elif [ "$1" == "pwn" ]
+then
+    echo "college"
+elif [ "$1" == "learn" ]
+then
+    echo "linux"
+else
+    echo "unknown"
+fi
+```
 
+In terminal : 
+```sh
+hacker@chaining~scripting-with-multiple-conditions:~$ /challenge/run
+Correct! Your script properly handles all the conditions with elif.
+Here's your flag:
+pwn.college{gHDYsdcXay6hGw9W-Y_iW1_aiku.0FOzMDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{gHDYsdcXay6hGw9W-Y_iW1_aiku.0FOzMDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to use multiple conditions in shebangs
 
 
 # Challenge 12 : Reading Shell Scripts
