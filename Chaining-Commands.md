@@ -627,19 +627,33 @@ NOTE: Feel free to try to read the code of other challenges as well! Reading cod
 
 ## Solution : 
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Read the shell script and run the command with the correct argument to get the flag
 - Step 3 : Copy and Paste flag
 ```sh
+hacker@chaining~reading-shell-scripts:~$ cat /challenge/run
+#!/opt/pwn.college/bash
 
+read GUESS
+if [ "$GUESS" == "hack the PLANET" ]
+then
+        echo "CORRECT! Your flag:"
+        cat /flag
+else
+        echo "Read the /challenge/run file to figure out the correct password!"
+fi
+hacker@chaining~reading-shell-scripts:~$ /challenge/run
+hack the PLANET
+CORRECT! Your flag:
+pwn.college{Y7oLZ3NXHWCW4yQ8M0PgBWeehln.0lMwgDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{Y7oLZ3NXHWCW4yQ8M0PgBWeehln.0lMwgDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes
-Learnt
+Learnt how to read a shell script
