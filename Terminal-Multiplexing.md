@@ -16,23 +16,25 @@ NOTE: When you're done with your command line, type exit or press Ctrl-D to leav
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Launch a screen to get the flag
 - Step 3 : Copy and paste the flag
 
 ```sh
-
+Congratulations! You're inside a screen session!
+Here's your flag:
+pwn.college{0xaA_85snWNxAKpCKMsHFjviY_c.0VN4IDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{0xaA_85snWNxAKpCKMsHFjviY_c.0VN4IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt
+Learnt how to launch screens
 
 
 # Challenge 2 : Detatching and Attatching
@@ -70,19 +72,32 @@ HINT: If you see [detached from...], you did it right!
 - Step 3 : Copy and paste the flag
 
 ```sh
+hacker@terminal-multiplexing~detaching-and-attaching:~$ screen
+[detached from 139.pts-0.terminal-multiplexing~detaching-and-attaching]
+hacker@terminal-multiplexing~detaching-and-attaching:~$ /challenge/run
+Found detached screen session: 139.pts-0.terminal-multiplexing~detaching-and-attaching
+Sending flag to your screen session...
 
+Flag sent! Now reattach to your screen session with:
+
+  screen -r
+
+You'll find the flag waiting for you there!
+hacker@terminal-multiplexing~detaching-and-attaching:~$ screen -r
+hacker@terminal-multiplexing~detaching-and-attaching:~$ echo Yes! Flag is: pwn.college{8E4XGriNe93x_T0RzA9TrGvWVLS.0lN4IDOxwSN4AzNzEzW}
+Yes! Flag is: pwn.college{8E4XGriNe93x_T0RzA9TrGvWVLS.0lN4IDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{8E4XGriNe93x_T0RzA9TrGvWVLS.0lN4IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt
+Learnt how to detatch and reattatch to the screen
 
 
 # Challenge 3 : Findong Sessions
@@ -110,16 +125,32 @@ You'll need to check each one until you find it. Don't forget to detach (Ctrl-A 
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Check all screens and then run the right one to get the flag
 - Step 3 : Copy and paste the flag
 
 ```sh
-
+hacker@terminal-multiplexing~finding-sessions:~$ screen -ls
+There are screens on:
+        151.pts-0.terminal-multiplexing~launching-screen        (Remote or dead)
+        139.pts-0.terminal-multiplexing~detaching-and-attaching (Remote or dead)
+        144.session_45ac95ef52c98a43    (Detached)
+        147.session_43a422d443a69ba9    (Detached)
+        150.session_b85cbaad969c62a8    (Detached)
+5 Sockets in /home/hacker/.screen.
+hacker@terminal-multiplexing~finding-sessions:~$ screen -r 144.session_45ac95ef52c98a43
+[detached from 144.session_45ac95ef52c98a43]
+hacker@terminal-multiplexing~finding-sessions:~$ screen -r  147.session_43a422d443a69ba9
+[detached from 147.session_43a422d443a69ba9]
+hacker@terminal-multiplexing~finding-sessions:~$ screen -r   150.session_b85cbaad969c62a8
+hacker@terminal-multiplexing~finding-sessions:~$  echo 'Congratulations! You found the right session!'
+Congratulations! You found the right session!
+hacker@terminal-multiplexing~finding-sessions:~$  echo pwn.college{8cP0LnLtaTEkHObSLGUuqEHQn40.01N4IDOxwSN4AzNzEzW}
+pwn.college{8cP0LnLtaTEkHObSLGUuqEHQn40.01N4IDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{8cP0LnLtaTEkHObSLGUuqEHQn40.01N4IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
@@ -154,19 +185,31 @@ Attach to the session with screen -r, then use one of the key combinations above
 - Step 3 : Copy and paste the flag
 
 ```sh
-
+hacker@terminal-multiplexing~switching-windows:~$ screen -r
+hacker@terminal-multiplexing~switching-windows:~$  cat <<MSG
+> Welcome to the window switching challenge!
+> You are currently in window 1.
+> The flag is hidden in window 0.
+> Use Ctrl-A 0 to switch to window 0!
+> MSG
+hacker@terminal-multiplexing~switching-windows:~$  cat <<MSG
+> Excellent work! You found window 0!
+> Here is your flag: pwn.college{QzcLYg21T_qPz6aFlPlQqZOJvYr.0FO4IDOxwSN4AzNzEzW}
+> MSG
+Excellent work! You found window 0!
+Here is your flag: pwn.college{QzcLYg21T_qPz6aFlPlQqZOJvYr.0FO4IDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{QzcLYg21T_qPz6aFlPlQqZOJvYr.0FO4IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt
+Learnt how to switch windows in screen
 
 
 # Challenge 5 : Detatching and Attatching (tmux)
@@ -196,23 +239,34 @@ For this challenge:
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Run the tmux, detach and run the correct commands to get your flag
 - Step 3 : Copy and paste the flag
 
 ```sh
+hacker@terminal-multiplexing~detaching-and-attaching-tmux:~$ tmux
+[detached (from session 0)]
+hacker@terminal-multiplexing~detaching-and-attaching-tmux:~$ /challenge/run
+Found detached tmux session: 0
+Sending flag to your tmux session...
 
+Flag sent! Now reattach to your tmux session with:
+  tmux attach
+
+You'll find the flag waiting for you there!
+hacker@terminal-multiplexing~detaching-and-attaching-tmux:~$  echo Congratulations, here is your flag: pwn.college{ggJbC3JZCszQ0Pz118rc9qNuy7w.0VO4IDOxwSN4AzNzEzW}
+Congratulations, here is your flag: pwn.college{ggJbC3JZCszQ0Pz118rc9qNuy7w.0VO4IDOxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{ggJbC3JZCszQ0Pz118rc9qNuy7w.0VO4IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt
+Learnt how to detach and reattatch from a tmux window
 
 
 # Challenge 6 : Switching Windows (tmux)
@@ -240,20 +294,23 @@ Go get that flag!
 
 ## Solution :
 - Step 1 : Open terminal
-- Step 2 :
+- Step 2 : Launch the tmux, open the window picker and go to page 0 to get the flag 
 - Step 3 : Copy and paste the flag
 
 ```sh
-
+hacker@terminal-multiplexing~switching-windows-tmux:~$ tmux
+> MSG
+Excellent work! You found window 0!
+Here is your flag: pwn.college{EV4UvN7h_SCOZeg-ySKEhWGaBdM.0FM5IDOxwSN4AzNzEzW}  
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{EV4UvN7h_SCOZeg-ySKEhWGaBdM.0FM5IDOxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes :
-Learnt
+Learnt how to switch windows in tmux using the window picker
